@@ -9,7 +9,7 @@ export class NegociacaoController {
   private inputQuantidade: HTMLInputElement;
   private inputValor: HTMLInputElement;
   private negociacoes = new Negociacoes();
-  private negociacoesView = new NegociacoesView("#negociacoesView");
+  private negociacoesView = new NegociacoesView("#negociacoesView", true);
   private mensagemView = new MensagemView("#mensagemView");
 
   constructor() {
@@ -37,10 +37,12 @@ export class NegociacaoController {
   }
 
   private criaNegociacao(): Negociacao {
-    const date = new Date(this.inputData.value.replace(/-/g, ","));
-    const quantidade = parseInt(this.inputQuantidade.value);
-    const valor = parseFloat(this.inputValor.value);
-    return new Negociacao(date, quantidade, valor);
+    const negociacao = Negociacao.criaDe(
+      this.inputData.value,
+      this.inputQuantidade.value,
+      this.inputValor.value
+    );
+    return negociacao;
   }
 
   private limparFormulario(): void {
