@@ -10,7 +10,7 @@ export function escape(
       // console.log(
       //   `@escape em ação na classe ${this.constructor.name} para o método ${propertyKey}`
       // );
-      return retorno.replace(/<script>[\s\S]*?<\/script>/, "");
+      return retorno.replace(/<script>[\s\S]*?<\/script>/gi, "");
     }
     return retorno;
   };
